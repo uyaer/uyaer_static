@@ -1,0 +1,90 @@
+body{
+    font-size: 2em;
+}
+
+.gbr_title{
+    margin-left: -50px;
+}
+.gbr_info{
+    width: 800px;
+}
+.gbr_info{
+    padding-left: 0px;
+    margin-left: -50px;
+}
+.gbr_info ul li{
+    width: 400px;
+    font-size: 0.9em;
+    line-height: 1em;
+    height: auto;
+}
+.gamebox_left{
+    width: 350px;
+}
+.gamebox_right{
+    position: relative;
+    z-index: 1;
+}
+.bigicon{
+    left: 0;
+}
+.gbr_intro {
+    width: 800px;
+    margin-left: -60px;
+}
+.gbr_in_onecenter{
+    line-height: 1.1em;
+    font-size: 1em;
+}
+#btn_one{
+    margin: -40px 250px;
+}
+.float_right{
+    float: right;
+    margin-right: -90px;
+}
+.game_box{
+    height: auto;
+    padding-bottom: 80px;
+}
+
+#nav_top {
+    width: 56px;
+    height: 64px;
+    background-size:100%;
+    margin-left: 55px;
+}
+
+.nav_white_dot {
+    width: 10px;
+    height: 10px;
+    margin: 1px 70px;
+}
+
+.nav_big_dot {
+    width: 64px;
+    height: 64px;
+    border-radius: 120px;
+    border: solid 4px #fff;
+    margin: 2px 40px;
+}
+
+#nav .nav_big_icon {
+    background-size: 120px 120px;
+    width: 120px;
+    height: 120px;
+    border: solid 10px #fff;
+    border-radius: 120px;
+    margin: 4px 10px;
+}
+.nav_bottom{
+    width: 80px;
+    height: 50px;
+    line-height: 44px;
+    border-radius: 80px;
+    border-width: 4px;
+    background: rgba(255,255,255,0.5);
+    padding: 8px;
+    margin: 4px 25px;
+    color: #178ba2;
+}

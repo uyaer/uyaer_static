@@ -15,7 +15,7 @@ $(document).ready(function (e) {
         updatePage();
 
         //开始页面动画
-        setTimeout(pageLoadOverStartAnim,50);
+        setTimeout(pageLoadOverStartAnim, 50);
     });
 
     /**
@@ -44,7 +44,7 @@ $(document).ready(function (e) {
                     '<img class="bigicon" src="images/' + vo.bigicon + '" width="228" height="432">' +
                     '</div>';
             }
-            txt += '<div class="gamebox_right" style="margin-left:30px;">';
+            txt += '<div class="gamebox_right" >';
             if (lang == "en") {
                 txt += '<div class="gbr_title gbr_title_en" style="background-image:url(images/{icon})">{name}</div>'
                     .replace('{icon}', vo.icon).replace('{name}', vo.name);
@@ -67,7 +67,7 @@ $(document).ready(function (e) {
             }
             txt += '</ul><div class="clear"></div></div>';
             //desc
-            txt += '<div class="gbr_intro"><div class="gbr_in_onetop"></div>' +
+            txt += '<div class="gbr_intro">' +
                 '<div class="gbr_in_onecenter"><p>' + vo.info + '</p></div>' +
                 '<div class="gbr_in_onefoot"></div></div>';
             //download
@@ -82,7 +82,7 @@ $(document).ready(function (e) {
 
             //float
             if (i % 2 == 1) {
-                txt += '<div class="gamebox_left"><img src="images/' + vo.bgimg + '"/>' +
+                txt += '<div class="gamebox_left ' + (isMobile ? 'float_right' : '') + '"><img src="images/' + vo.bgimg + '"/>' +
                     '<img class="bigicon" src="images/' + vo.bigicon + '"width="228" height="432"></div>';
             }
 
@@ -252,10 +252,16 @@ $(document).ready(function (e) {
         function updateNavX() {
         }
 
-        requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame ||
-            function (callback) {
-                setTimeout(callback, 1000 / 60)
-            };
+        var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || window.oRequestAnimationFrame || _requestAnimationFrame;
+
+        function _requestAnimationFrame(callback) {
+            setTimeout(callback, 1000 / 60)
+        }
+
+        var navScale = 1;
+        if (isMobile) {
+            navScale = 2;
+        }
 
         function step() {
             if (isDown) {
@@ -263,12 +269,12 @@ $(document).ready(function (e) {
                 for (var i = dotArr.length - 2; i >= 0; i--) {
                     var el = $(dotArr[i]);
                     var mb2Y = int(el.css("top").replace("px", ""));
-                    var toY = mbY - (mbY - mb2Y) / 2 - 5;
-                    if (el.hasClass("nav_big_dot")) toY = mbY - (mbY - mb2Y) / 2 - 22;
-                    if (el.hasClass("nav_big_icon")) toY = mbY - (mbY - mb2Y) / 2 - 40;
-                    if (i == 0) toY = mbY - (mbY - mb2Y) / 2 - 17;
+                    var toY = mbY - (mbY - mb2Y) / 2 - 5 * navScale;
+                    if (el.hasClass("nav_big_dot")) toY = mbY - (mbY - mb2Y) / 2 - 22 * navScale;
+                    if (el.hasClass("nav_big_icon")) toY = mbY - (mbY - mb2Y) / 2 - 40 * navScale;
+                    if (i == 0) toY = mbY - (mbY - mb2Y) / 2 - 17 * navScale;
                     el.css("top", toY);
-                    mbY = mb2Y
+                    mbY = mb2Y;
                 }
             } else {
                 var mbY = int($nav_t.css("top").replace("px", ""));
@@ -276,19 +282,19 @@ $(document).ready(function (e) {
                 for (var i = 1; i < dotArr.length; i++) {
                     var el = $(dotArr[i]);
                     var mb2Y = int(el.css("top").replace("px", ""));
-                    var toY = mbY + (mb2Y - mbY) / 2 + 5;
-                    if (oldDiv.hasClass("nav_big_dot")) toY = mbY + (mb2Y - mbY) / 2 + 22;
-                    if (oldDiv.hasClass("nav_big_icon")) toY = mbY + (mb2Y - mbY) / 2 + 40;
-                    if (i == 1) toY = mbY + (mb2Y - mbY) / 2 + 17;
+                    var toY = mbY + (mb2Y - mbY) / 2 + 5 * navScale;
+                    if (oldDiv.hasClass("nav_big_dot")) toY = mbY + (mb2Y - mbY) / 2 + 22 * navScale;
+                    if (oldDiv.hasClass("nav_big_icon")) toY = mbY + (mb2Y - mbY) / 2 + 40 * navScale;
+                    if (i == 1) toY = mbY + (mb2Y - mbY) / 2 + 17 * navScale;
                     el.css("top", toY);
                     mbY = mb2Y;
-                    oldDiv = el
+                    oldDiv = el;
                 }
             }
-            requestAnimationFrame(step)
+            requestAnimationFrame(step);
         }
 
-        requestAnimationFrame(step)
+        requestAnimationFrame(step);
     }
 });
 
