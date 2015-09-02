@@ -1,49 +1,80 @@
-body{
+body {
     font-size: 2em;
 }
 
-.gbr_title{
+#top {
+    height: 120px;
+    border-bottom: 2px solid #ddd;
+}
+
+#top_box {
+    height: 100%;
+}
+#top_logo {
+    height: 100%;
+}
+#top_logo img{
+    width: 200%;
+    height: 100%;
+}
+#top_right {
+    line-height: 120px;
+    font-size: 2em;
+}
+
+.gbr_title {
     margin-left: -50px;
 }
-.gbr_info{
+
+.gbr_info {
     width: 800px;
 }
-.gbr_info{
+
+.gbr_info {
     padding-left: 0px;
     margin-left: -50px;
 }
-.gbr_info ul li{
+
+.gbr_info ul li {
     width: 400px;
     font-size: 0.9em;
     line-height: 1em;
     height: auto;
 }
-.gamebox_left{
+
+.gamebox_left {
     width: 350px;
 }
-.gamebox_right{
+
+.gamebox_right {
     position: relative;
     z-index: 1;
 }
-.bigicon{
+
+.bigicon {
     left: 0;
 }
+
 .gbr_intro {
     width: 800px;
     margin-left: -60px;
 }
-.gbr_in_onecenter{
+
+.gbr_in_onecenter {
     line-height: 1.1em;
     font-size: 1em;
 }
-#btn_one{
+
+#btn_one {
     margin: -40px 250px;
 }
-.float_right{
+
+.float_right {
     float: right;
     margin-right: -90px;
 }
-.game_box{
+
+.game_box {
     height: auto;
     padding-bottom: 80px;
 }
@@ -51,7 +82,7 @@ body{
 #nav_top {
     width: 56px;
     height: 64px;
-    background-size:100%;
+    background-size: 100%;
     margin-left: 55px;
 }
 
@@ -77,13 +108,14 @@ body{
     border-radius: 120px;
     margin: 4px 10px;
 }
-.nav_bottom{
+
+.nav_bottom {
     width: 80px;
     height: 50px;
     line-height: 44px;
     border-radius: 80px;
     border-width: 4px;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255, 255, 255, 0.5);
     padding: 8px;
     margin: 4px 25px;
     color: #178ba2;
