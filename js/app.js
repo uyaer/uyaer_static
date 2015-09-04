@@ -22,8 +22,69 @@ $(document).ready(function (e) {
      * 更新页面
      */
     function updatePage() {
-        updateNavTop();
+        if (!isMobile) {
+            updateNavTop();
+        }
         updateGameListView();
+        bindBigIconEvent();
+    }
+
+    /**
+     * 绑定事件
+     */
+    function bindBigIconEvent() {
+        if (!isMobile)return;
+        $(".bigicon").click(function () {
+            $body = $("body");
+            var container = $("<div id='showImgContainer'>").appendTo($body);
+            var img = $("<img id='showImg'>").attr("src", $(this).attr("src"));
+            img.appendTo($body);
+            var w = innerWidth;
+            var h = innerHeight;
+            var ow = $(this).width();
+            var oh = $(this).height();
+            var pre = ow / oh;//宽高比
+            var dw = w * 0.75;
+            var dh = h * 0.75;
+            if (w < h * pre) { //竖屏
+                dh = dw / pre;
+            } else { //横屏
+                dw = dh * pre;
+            }
+            img.width(ow);
+            img.height(oh);
+            var box = $(this)[0].getBoundingClientRect();
+            trace(box.top + " " + box.left)
+            img.css("top", box.top);
+            img.css("left", box.left);
+            img.animate({
+                "width": dw,
+                "height": dh,
+                "top": (h - dh) / 2,
+                "left": (w - dw) / 2
+            },500);
+            container.hide();
+            container.fadeIn(500);
+            img.click(function () {
+                img.animate({
+                    "width": ow,
+                    "height": oh,
+                    "top": box.top,
+                    "left": box.left
+                },500,function(){
+                    $body.off("touchmove", preventDefaultHandler);
+                    img.remove();
+                });
+                container.fadeOut(500, function () {
+                    container.remove();
+                });
+            });
+            $body.on("touchmove", preventDefaultHandler);
+        });
+    }
+
+    function preventDefaultHandler(e) {
+        e.preventDefault();
     }
 
     /**
@@ -35,7 +96,7 @@ $(document).ready(function (e) {
         for (var i = 0; i < arr.length; i++) {
             /**@type GameVo*/
             var vo = arr[i];
-            var txt = '<div class="game" style="background-color:{bgcolor}">'
+            var txt = '<div class="game" id="game-' + vo.id + '" style="background-color:{bgcolor}">'
                     .replace('{bgcolor}', vo.bgcolor) +
                 '<div class="game_box">';
             if (i % 2 == 0) {
@@ -44,7 +105,11 @@ $(document).ready(function (e) {
                     '<img class="bigicon" src="images/' + vo.bigicon + '" width="228" height="432">' +
                     '</div>';
             }
-            txt += '<div class="gamebox_right" >';
+            if (i % 2 == 1 && isMobile) {
+                txt += '<div class="gamebox_right float_left" >';
+            } else {
+                txt += '<div class="gamebox_right" >';
+            }
             if (lang == "en") {
                 txt += '<div class="gbr_title gbr_title_en" style="background-image:url(images/{icon})">{name}</div>'
                     .replace('{icon}', vo.icon).replace('{name}', vo.name);
@@ -71,14 +136,14 @@ $(document).ready(function (e) {
                 '<div class="gbr_in_onecenter"><p>' + vo.info + '</p></div>' +
                 '<div class="gbr_in_onefoot"></div></div>';
             //download
-            txt += '<div id="btn_one"><a href="' + vo.downloadurl + '">';
+            txt += '<div id="btn_one"><div class="down_icon"></div><a href="' + vo.downloadurl + '">';
 
             if ("zh" == lang) {
                 txt += 'Android下载';
             } else {
                 txt += 'Download';
             }
-            txt += '</a></div></div>';
+            txt += '</a><div class="clear"></div></div></div>';
 
             //float
             if (i % 2 == 1) {
@@ -140,13 +205,21 @@ $(document).ready(function (e) {
      * 开始页面动画
      */
     function pageLoadOverStartAnim() {
+        var navScale = 1;
+        if (isMobile) {
+            navScale = 2;
+        }
+
+
         var $nav_b = $("#nav .nav_bottom");
         var $nav_t = $("#nav #nav_top");
 
         var dotArr = $nav.children();
         var bigDotArr = $nav.children(".nav_big_dot");
         var gameArr = $(".game");
-        var navH = (bigDotArr.length + 1) * 90;
+        var navH = (bigDotArr.length + 1) * 90 * navScale;
+
+
         updateNavX();
         updateNavY();
         var gamelen = $(".game").length;
@@ -161,70 +234,74 @@ $(document).ready(function (e) {
         $(window).resize(function (e) {
             updateNavX(true)
         });
-        $(window).scroll(function (e) {
-            var stop = $(window).scrollTop();
-            var winH = window.innerHeight;
-            var hasGame = false;
-            gameArr.each(function (index, el) {
-                el = $(el);
-                var gtop = el.offset().top;
-                var h1 = gtop - winH / 3;
-                var h2 = h1 + el.height();
-                if (stop >= h1 && stop < h2) {
-                    var bigDot = $(bigDotArr[index]);
-                    $(".nav_big_target").removeClass("nav_big_target").removeClass("nav_big_icon").css("background-image", "");
-                    bigDot.addClass("nav_big_icon").addClass("nav_big_target");
-                    bigDot.css("background-image", "url(images/" + bigDot.data("icon") + ")");
-                    hasGame = true;
-                    return
+        if (!isMobile) {
+            $(window).scroll(function (e) {
+                var stop = $(window).scrollTop();
+                var winH = window.innerHeight;
+                var hasGame = false;
+                gameArr.each(function (index, el) {
+                    el = $(el);
+                    var gtop = el.offset().top;
+                    var h1 = gtop - winH / 3;
+                    var h2 = h1 + el.height();
+                    if (stop >= h1 && stop < h2) {
+                        var bigDot = $(bigDotArr[index]);
+                        $(".nav_big_target").removeClass("nav_big_target").removeClass("nav_big_icon").css("background-image", "");
+                        bigDot.addClass("nav_big_icon").addClass("nav_big_target");
+                        bigDot.css("background-image", "url(images/" + bigDot.data("icon") + ")");
+                        hasGame = true;
+                        return
+                    }
+                });
+                if (!hasGame) {
+                    $(".nav_big_target").removeClass("nav_big_target").removeClass("nav_big_icon").css("background-image", "")
                 }
+                updateNavY();
+                isAnimStop = false;
             });
-            if (!hasGame) {
-                $(".nav_big_target").removeClass("nav_big_target").removeClass("nav_big_icon").css("background-image", "")
-            }
-            updateNavY()
-        });
-        $("#nav .nav_big_dot").click(function (e) {
-            var index = $(this).prevAll(".nav_big_dot").length;
-            var pos = $($(".game").get(index)).offset();
-            var winH = window.innerHeight;
-            $(window).scrollTop(pos.top - 50)
-        });
-        $("#nav .nav_bottom").click(function (e) {
-            $(window).scrollTop(0)
-        });
-        $("#nav .nav_big_dot").mouseover(function (e) {
-            var el = $(this);
-            if (el.hasClass("nav_big_target")) return;
-            el.addClass("nav_big_icon");
-            el.css("background-image", "url(images/" + el.data("icon") + ")");
-            isHover = true;
-            hoverTarget = el;
-            isHoverAnimOver = false;
-            setTimeout(function () {
-                isHoverAnimOver = true;
-                if (isNeedOverAnim) {
+            $("#nav .nav_big_dot").click(function (e) {
+                var index = $(this).prevAll(".nav_big_dot").length;
+                var pos = $($(".game").get(index)).offset();
+                var winH = window.innerHeight;
+                $(window).scrollTop(pos.top - 50)
+            });
+            $("#nav .nav_bottom").click(function (e) {
+                $(window).scrollTop(0)
+            });
+            $("#nav .nav_big_dot").mouseover(function (e) {
+                var el = $(this);
+                if (el.hasClass("nav_big_target")) return;
+                el.addClass("nav_big_icon");
+                el.css("background-image", "url(images/" + el.data("icon") + ")");
+                isHover = true;
+                hoverTarget = el;
+                isHoverAnimOver = false;
+                setTimeout(function () {
+                    isHoverAnimOver = true;
+                    if (isNeedOverAnim) {
+                        el.removeClass("nav_big_icon");
+                        el.css("background-image", "");
+                        isHover = false;
+                        hoverTarget = null;
+                        isNeedOverAnim = false
+                    }
+                }, 150)
+            });
+            $("#nav .nav_big_dot").mouseout(function (e) {
+                var el = $(this);
+                if (el.hasClass("nav_big_target")) return;
+                if (!isHoverAnimOver) {
+                    isNeedOverAnim = true
+                } else {
                     el.removeClass("nav_big_icon");
                     el.css("background-image", "");
                     isHover = false;
                     hoverTarget = null;
                     isNeedOverAnim = false
                 }
-            }, 150)
-        });
-        $("#nav .nav_big_dot").mouseout(function (e) {
-            var el = $(this);
-            if (el.hasClass("nav_big_target")) return;
-            if (!isHoverAnimOver) {
-                isNeedOverAnim = true
-            } else {
-                el.removeClass("nav_big_icon");
-                el.css("background-image", "");
-                isHover = false;
-                hoverTarget = null;
-                isNeedOverAnim = false
-            }
-        });
+            });
+        }
+
 
         function updateNavY() {
             var now = Date.now();
@@ -242,7 +319,6 @@ $(document).ready(function (e) {
                 }, 500, "easeOutBack")
             } else {
                 isDown = false;
-                trace(navH);
                 $nav_t.animate({
                     "top": stop + winh - navH - 200
                 }, 500, "easeOutBack")
@@ -258,23 +334,40 @@ $(document).ready(function (e) {
             setTimeout(callback, 1000 / 60)
         }
 
-        var navScale = 1;
-        if (isMobile) {
-            navScale = 2;
-        }
+        var lastUpdateTime = Date.now();
+        var isAnimStop = false;
 
         function step() {
+            requestAnimationFrame(step);
+
+            var now = Date.now();
+            var dt = now - lastUpdateTime;
+            var fps = parseInt(1000 / dt);
+            lastUpdateTime = now;
+
+            var moveSpeed = 2;
+
+            if (isAnimStop || isMobile) {
+                $("#debug").text(VERSION + " " + (Date.now() - lastUpdateTime) + " " + fps);
+                return;
+            }
+            isAnimStop = true;
             if (isDown) {
                 var mbY = int($nav_b.css("top").replace("px", ""));
                 for (var i = dotArr.length - 2; i >= 0; i--) {
                     var el = $(dotArr[i]);
                     var mb2Y = int(el.css("top").replace("px", ""));
-                    var toY = mbY - (mbY - mb2Y) / 2 - 5 * navScale;
-                    if (el.hasClass("nav_big_dot")) toY = mbY - (mbY - mb2Y) / 2 - 22 * navScale;
-                    if (el.hasClass("nav_big_icon")) toY = mbY - (mbY - mb2Y) / 2 - 40 * navScale;
-                    if (i == 0) toY = mbY - (mbY - mb2Y) / 2 - 17 * navScale;
+                    var toY = mbY - (mbY - mb2Y) / moveSpeed - 5 * navScale;
+                    if (el.hasClass("nav_big_dot")) toY = mbY - (mbY - mb2Y) / moveSpeed - 22 * navScale;
+                    if (el.hasClass("nav_big_icon")) toY = mbY - (mbY - mb2Y) / moveSpeed - 40 * navScale;
+                    if (i == 0) {
+                        toY = mbY - (mbY - mb2Y) / moveSpeed - 17 * navScale;
+                    }
                     el.css("top", toY);
                     mbY = mb2Y;
+                    if (Math.abs(toY - mb2Y) >= 1) {
+                        isAnimStop = false;
+                    }
                 }
             } else {
                 var mbY = int($nav_t.css("top").replace("px", ""));
@@ -282,16 +375,22 @@ $(document).ready(function (e) {
                 for (var i = 1; i < dotArr.length; i++) {
                     var el = $(dotArr[i]);
                     var mb2Y = int(el.css("top").replace("px", ""));
-                    var toY = mbY + (mb2Y - mbY) / 2 + 5 * navScale;
-                    if (oldDiv.hasClass("nav_big_dot")) toY = mbY + (mb2Y - mbY) / 2 + 22 * navScale;
-                    if (oldDiv.hasClass("nav_big_icon")) toY = mbY + (mb2Y - mbY) / 2 + 40 * navScale;
-                    if (i == 1) toY = mbY + (mb2Y - mbY) / 2 + 17 * navScale;
+                    var toY = mbY + (mb2Y - mbY) / moveSpeed + 5 * navScale;
+                    if (oldDiv.hasClass("nav_big_dot")) toY = mbY + (mb2Y - mbY) / moveSpeed + 22 * navScale;
+                    if (oldDiv.hasClass("nav_big_icon")) toY = mbY + (mb2Y - mbY) / moveSpeed + 40 * navScale;
+                    if (i == 1) {
+                        toY = mbY + (mb2Y - mbY) / moveSpeed + 17 * navScale;
+                    }
                     el.css("top", toY);
                     mbY = mb2Y;
                     oldDiv = el;
+                    if (Math.abs(toY - mb2Y) >= 1) {
+                        isAnimStop = false;
+                    }
                 }
             }
-            requestAnimationFrame(step);
+
+            $("#debug").text(VERSION + " " + (Date.now() - lastUpdateTime) + " " + parseInt(1000 / dt));
         }
 
         requestAnimationFrame(step);

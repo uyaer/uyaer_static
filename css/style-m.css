@@ -1,3 +1,6 @@
+html{
+    min-width: 1280px;
+}
 body {
     font-size: 2em;
 }
@@ -10,20 +13,25 @@ body {
 #top_box {
     height: 100%;
 }
+
 #top_logo {
     height: 100%;
 }
-#top_logo img{
+
+#top_logo img {
     width: 200%;
     height: 100%;
 }
+
 #top_right {
     line-height: 120px;
     font-size: 2em;
 }
 
-.gbr_title {
+#game_container .gbr_title {
     margin-left: -50px;
+    min-height: 114px;
+    font-size: 3em;
 }
 
 .gbr_info {
@@ -35,20 +43,33 @@ body {
     margin-left: -50px;
 }
 
-.gbr_info ul li {
-    width: 400px;
-    font-size: 0.9em;
-    line-height: 1em;
+#game_container .gbr_info ul li {
+    width: 100%;
+    font-size: 1.1em;
+    line-height: 1.2em;
     height: auto;
+    float: none;
+}
+
+.gbr_in_onecenter p{
+    width: 744px;
+}
+
+.gbr_info ul li:before {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
 }
 
 .gamebox_left {
     width: 350px;
+    margin-top: 150px;
 }
 
 .gamebox_right {
     position: relative;
     z-index: 1;
+    width: 700px;
 }
 
 .bigicon {
@@ -61,12 +82,32 @@ body {
 }
 
 .gbr_in_onecenter {
-    line-height: 1.1em;
-    font-size: 1em;
+    line-height: 1.3em;
+    font-size: 1.2em;
 }
 
 #btn_one {
-    margin: -40px 250px;
+    margin: -40px 150px;
+    width: 495px;
+    height: 155px;
+    font-size: 30px;
+    line-height: 120px;
+}
+
+#btn_one .down_icon {
+    width: 155px;
+    background-size: 50%;
+}
+
+#btn_one a {
+    height: 100%;
+    padding-left: 125px;
+    font-size: 1.4em;
+    line-height: 155px;
+}
+
+.float_left {
+    margin-left: 120px;
 }
 
 .float_right {
@@ -75,15 +116,20 @@ body {
 }
 
 .game_box {
+    width: 1200px;
     height: auto;
-    padding-bottom: 80px;
+    padding-bottom: 100px;
+}
+
+#nav {
+    right: -220px;
 }
 
 #nav_top {
     width: 56px;
     height: 64px;
     background-size: 100%;
-    margin-left: 55px;
+    margin-left: 50px;
 }
 
 .nav_white_dot {
@@ -119,4 +165,9 @@ body {
     padding: 8px;
     margin: 4px 25px;
     color: #178ba2;
+}
+
+#foot_text {
+    font-size: 1.2em;
+    line-height: 2em;
 }

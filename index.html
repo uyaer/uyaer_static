@@ -5,26 +5,30 @@
     <meta http-equiv="keywords" content="重返糖果岛,back to candyland,笨笨飞机,小球快跑,别踩红块儿,别踩百块,android,游戏,android游戏">
     <meta http-equiv="description" content="Uyaer,All My Game List!">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link href="css/style.css?v=1" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css?v=2" rel="stylesheet" type="text/css"/>
 
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
-    <script src="js/app.js?v=1"></script>
+    <script src="js/app.js?v=6"></script>
 
 </head>
 
 
 <body>
+<div id="debug" style="position: fixed; font-size: 3em; background: white; z-index: 100; display: none;">
+</div>
+
+
 <div id="nav">
-    <div id="nav_top"></div>
+    <!--<div id="nav_top"></div>-->
 
-    <div class="nav_big_dot" style="background-color: #ff0000" data-icon=""></div>
-    <div class="nav_white_dot"></div>
-    <div class="nav_white_dot"></div>
-    <div class="nav_white_dot"></div>
-    <div class="nav_white_dot"></div>
+    <!--<div class="nav_big_dot" style="background-color: #ff0000" data-icon=""></div>-->
+    <!--<div class="nav_white_dot"></div>-->
+    <!--<div class="nav_white_dot"></div>-->
+    <!--<div class="nav_white_dot"></div>-->
+    <!--<div class="nav_white_dot"></div>-->
 
-    <div class="nav_bottom">Top</div>
+    <!--<div class="nav_bottom">Top</div>-->
 </div>
 
 
@@ -53,6 +57,7 @@
 
 <script>
     (function ($) {
+        window.VERSION = "v2";
         //判断语言
         var url = window.location.href;
         var arr = url.split("?");
@@ -63,15 +68,21 @@
             } else if (lang.indexOf("zh") != -1) {
                 $.lang = "zh";
             }
+            //判断debug
+            window.isDebug = lang.indexOf("debug") != -1;
+            if (isDebug) {
+                document.getElementById("debug").style.display = "block";
+            }
         }
         //判断平台
         var ua = navigator.userAgent.toLowerCase();
-        window.isMobile = ua.indexOf('mobile') !== -1 || ua.indexOf('android') !== -1;
-        if(isMobile){
+        window.isMobile = ua.indexOf('mobile') !== -1 || ua.indexOf('android') !== -1 || ua.indexOf('playbook') !== -1;
+        window.isIOS = ua.indexOf('iphone') !== -1 || ua.indexOf('ipad') !== -1;
+        if (isMobile) {
             var css = document.createElement("link");
-            css.setAttribute("href","css/style-m.css");
-            css.setAttribute("rel","stylesheet");
-            css.setAttribute("type","text/css");
+            css.setAttribute("href", "css/style-m.css?" + VERSION);
+            css.setAttribute("rel", "stylesheet");
+            css.setAttribute("type", "text/css");
             document.getElementsByTagName("head")[0].appendChild(css);
         }
     })(window);

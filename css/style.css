@@ -175,12 +175,18 @@ a {
     font-size: 30px;
     line-height: 76px;
     text-align: center;
-    background-image: url(../images/btn.png);
-    background-repeat: no-repeat;
+    background: #5494f3;
+    border-radius: 12px;
+}
+#btn_one .down_icon{
+    width: 96px;
+    height: 100%;
+    background: url(../images/btn.png) #7daef6 center center no-repeat;
+    border-radius: 12px 0px 0px 12px;
+    float: left;
 }
 
 #btn_one a {
-    width: 210px;
     height: 85px;
     display: block;
     padding-left: 85px;
@@ -326,6 +332,7 @@ a {
 #nav_top {
     width: 28px;
     height: 32px;
+    margin-left: 45px;
     background-image: url(../images/nav_logo.png);
     background-repeat: no-repeat;
     background-position: center center;
@@ -393,4 +400,18 @@ a {
 
 a img {
     border: none;
+}
+
+#showImgContainer{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.25);
+    z-index: 99;
+    top: 0;
+    left: 0;
+}
+#showImg{
+    position: fixed;
+    z-index: 100;
 }
