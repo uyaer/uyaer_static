@@ -9,7 +9,7 @@ $(document).ready(function (e) {
     updateLangNav();
 
     //初始化数据
-    $.getJSON("data/data.json", function (data) {
+    $.getJSON("data/data.json?"+VERSION, function (data) {
         GameManager.initData(data["games"]);
 
         updatePage();
