@@ -62,7 +62,7 @@ $(document).ready(function (e) {
                 "height": dh,
                 "top": (h - dh) / 2,
                 "left": (w - dw) / 2
-            },500);
+            }, 500);
             container.hide();
             container.fadeIn(500);
             img.click(function () {
@@ -71,7 +71,7 @@ $(document).ready(function (e) {
                     "height": oh,
                     "top": box.top,
                     "left": box.left
-                },500,function(){
+                }, 500, function () {
                     $body.off("touchmove", preventDefaultHandler);
                     img.remove();
                 });
@@ -250,7 +250,7 @@ $(document).ready(function (e) {
                         bigDot.addClass("nav_big_icon").addClass("nav_big_target");
                         bigDot.css("background-image", "url(images/" + bigDot.data("icon") + ")");
                         hasGame = true;
-                        return
+                        return;
                     }
                 });
                 if (!hasGame) {
@@ -464,6 +464,10 @@ function GameVo(obj) {
      * 是否是英文版本
      */
     this.isEn = obj.isen;
+    /**
+     * 正式版本是否显示
+     */
+    this.isShow = obj.isshow;
 }
 
 /**
@@ -488,12 +492,20 @@ GameManager.initData = function (arr) {
     GameManager._dataEnArr = [];
     for (var i = 0; i < arr.length; i++) {
         var vo = new GameVo(arr[i]);
+        //正式版下，不显示的东西
+        if (!isDebug && !vo.isShow)continue;
         if (vo.isEn) {
             GameManager._dataEnArr.push(vo);
         } else {
             GameManager._dataZhArr.push(vo);
         }
     }
+    GameManager._dataEnArr.sort(function (a,b) {
+        return a.sort < b.sort;
+    });
+    GameManager._dataZhArr.sort(function (a,b) {
+        return a.sort < b.sort;
+    });
 };
 
 GameManager.getData = function () {

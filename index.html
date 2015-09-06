@@ -9,7 +9,7 @@
 
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/jquery.easing.min.js"></script>
-    <script src="js/app.js?v=6"></script>
+    <script src="js/app.js?v=7"></script>
 
 </head>
 
@@ -21,13 +21,11 @@
 
 <div id="nav">
     <!--<div id="nav_top"></div>-->
-
     <!--<div class="nav_big_dot" style="background-color: #ff0000" data-icon=""></div>-->
     <!--<div class="nav_white_dot"></div>-->
     <!--<div class="nav_white_dot"></div>-->
     <!--<div class="nav_white_dot"></div>-->
     <!--<div class="nav_white_dot"></div>-->
-
     <!--<div class="nav_bottom">Top</div>-->
 </div>
 
@@ -58,6 +56,7 @@
 <script>
     (function ($) {
         window.VERSION = "v2";
+        window.isDebug = false;
         //判断语言
         var url = window.location.href;
         var arr = url.split("?");
