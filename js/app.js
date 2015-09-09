@@ -16,7 +16,20 @@ $(document).ready(function (e) {
 
         //开始页面动画
         setTimeout(pageLoadOverStartAnim, 50);
+
+        //重新定位
+        scrollToView();
     });
+
+    /**
+     * 重定位
+     */
+    function scrollToView(){
+        var url = location.href;
+        if(url.indexOf("#game-")>-1){
+            location.href = url;
+        }
+    }
 
     /**
      * 更新页面

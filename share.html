@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>分享</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-size: 1.2em;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            background: -webkit-radial-gradient(closest-side, #20a196 0, #138178 100%);
+            background: -moz-radial-gradient(closest-side, #20a196 0, #138178 100%);
+            background: radial-gradient(closest-side, #20a196 0, #138178 100%);
+            background-position: 50% 50%;
+            -webkit-background-origin: padding-box;
+            background-origin: padding-box;
+            -webkit-background-clip: border-box;
+            background-clip: border-box;
+            -webkit-background-size: auto auto;
+            background-size: auto auto;
+            width: 100%;
+            height: 100%;
+            font-family: "Arial";
+        }
+
+        #banner {
+            margin: 1em 5%;
+            height: 5em;
+            line-height: 5em;
+            font-size: 2.2em;
+        }
+
+        #logo {
+            background: url("images/share-logo.png") no-repeat center center;
+            width: 20%;
+            background-size: 100%;
+            height: 100%;
+            margin-right: 16px;
+            float: left;
+        }
+
+        #center {
+            clear: both;
+        }
+
+        #game-icon {
+            margin: 16px auto;
+            width: 60%;
+            display: block;
+        }
+
+        #game-name {
+            font-size: 2em;
+            text-align: center;
+            line-height: 3em;
+        }
+
+        #share-list{
+            transform-origin: 0 0;
+        }
+    </style>
+</head>
+<body>
+<div id="banner">
+    <div id="logo"></div>
+    www.uyaer.com
+</div>
+<div id="center">
+    <img id="game-icon" src="#"/>
+
+    <div id="game-name">游戏名字</div>
+</div>
+<div id="share-container">
+</div>
+</body>
+<div id="share-list" class="bdsharebuttonbox" data-tag="share_1">
+    <a class="bds_mshare" data-cmd="mshare"></a>
+    <a class="bds_qzone" data-cmd="qzone" href="#"></a>
+    <a class="bds_tsina" data-cmd="tsina"></a>
+    <a class="bds_baidu" data-cmd="baidu"></a>
+    <a class="bds_renren" data-cmd="renren"></a>
+    <a class="bds_tqq" data-cmd="tqq"></a>
+    <a class="bds_more" data-cmd="more">更多</a>
+    <a class="bds_count" data-cmd="count"></a>
+</div>
+<script>
+    /**
+     * @example http://localhost:63342/uyaer_static/share.html?lang=zh&icon=_games/ten2more/icon512.png&name=tendots&title=十分完美&desc=非常&url=http://uyaer.qiniudn.com/#game-7
+     */
+
+    /**
+     * @param id
+     * @returns {Element}
+     */
+    function $(id) {
+        return document.getElementById(id);
+    }
+
+    var baseURL = location.origin + "/";
+    var url = location.href;
+    url = decodeURI(url);
+    var params = url.split("?")[1];
+    if (params) {
+        params = params.split("&");
+        var args = {};
+        for (var i = 0; i < params.length; i++) {
+            var obs = params[i].split("=");
+            args[obs[0]] = obs[1];
+        }
+        //分享显示的东西
+        $("game-icon").setAttribute("src", baseURL + args["icon"]);
+        $("game-name").innerText = args["name"];
+
+        var lang = args['lang'];
+        var shareList = ['mshare', 'qzone', 'tsina', 'weixin', 'sqq', 'huaban', 'fbook', 'twi', 'linkedin'];
+        if (lang == 'en') {
+            shareList = ['fbook', 'twi', 'linkedin', 'qzone', 'tsina', 'weixin', 'sqq', 'huaban'];
+        }
+
+        var htmlTxt = "";
+        for (var i = 0; i < shareList.length; i++) {
+            htmlTxt += '<a class="bds_' + shareList[i] + '" data-cmd="' + shareList[i] + '" style="' + ((i != 0 && i % 4 == 0) ? 'clear:left' : '') + '"></a>';
+        }
+        htmlTxt += '<a class="bds_more" data-cmd="more"  style="' + ((i != 0 && i % 4 == 0) ? 'clear:left' : '') + '">更多</a>';
+        htmlTxt += '<a class="bds_count" data-cmd="count"></a>';
+        $("share-list").innerHTML = htmlTxt;
+        //居中
+        var w = 4 * 38;
+        var scale = document.body.clientWidth / w - 0.1;
+        $("share-list").style.marginLeft = (document.body.clientWidth - w * scale)/2 + "px";
+        $("share-list").style.marginTop = scale * 1.5 * 38 + "px";
+        $("share-list").style.webkitTransform = "scale(" + scale + ")";
+        $("share-list").style.mozTransform = "scale(" + scale + ")";
+        $("share-list").style.msTransform = "scale(" + scale + ")";
+        $("share-list").style.oTransform = "scale(" + scale + ")";
+        $("share-list").style.transform = "scale(" + scale + ")";
+        window._bd_share_config = {
+            common: {
+                bdText: args['title'],//'自定义分享内容',
+                bdDesc: args['desc'],//'自定义分享摘要',
+                bdUrl: args['url'],//'自定义分享url地址',
+                bdPic: args['pic'] || args['icon'],//'自定义分享图片'
+                bdSign: 'off',
+                bdPopupOffsetLeft: -250,
+                bdPopupOffsetTop: 10
+            },
+            share: [{
+                "bdSize": 32
+            }]
+        }
+        with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+    }
+
+</script>
+</html>
