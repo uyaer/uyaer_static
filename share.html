@@ -7,7 +7,17 @@
         * {
             padding: 0;
             margin: 0;
+
         }
+
+        div{
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            -khtml-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
 
         html {
             width: 100%;
@@ -65,10 +75,33 @@
             line-height: 3em;
         }
 
-        #share-list{
+        #share-list {
             transform-origin: 0 0;
         }
+
+        #share-list .ashare {
+            background-image: url('images/icons_0_32.png');
+            width: 240px;
+            height: 64px;
+            font-size: 2em;
+            line-height: 64px;
+            padding-left: 40px;
+            text-align: center;
+            border: 1px solid #018dc4;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            color: rgba(255, 255, 255, 0.9);
+            background-color: #0199d9;
+            -webkit-box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+            text-shadow: -1px -1px 0 rgba(15, 73, 168, 0.66);
+            text-indent: 0px;
+            margin-right: 16px;
+            margin-bottom: 16px;
+            background-position-x: 10px;
+        }
     </style>
+
 </head>
 <body>
 <div id="banner">
@@ -96,6 +129,13 @@
 <script>
     /**
      * @example http://localhost:63342/uyaer_static/share.html?lang=zh&icon=_games/ten2more/icon512.png&name=tendots&title=十分完美&desc=非常&url=http://uyaer.qiniudn.com/#game-7
+     * @params lang (zh,en)
+     * @params icon
+     * @params name
+     * @params title
+     * @params desc
+     * @params url
+     * @params pic
      */
 
     /**
@@ -129,27 +169,21 @@
 
         var htmlTxt = "";
         for (var i = 0; i < shareList.length; i++) {
-            htmlTxt += '<a class="bds_' + shareList[i] + '" data-cmd="' + shareList[i] + '" style="' + ((i != 0 && i % 4 == 0) ? 'clear:left' : '') + '"></a>';
+            htmlTxt += '<a class="ashare bds_' + shareList[i] + '" data-cmd="' + shareList[i] + '" style="' + ((i != 0 && i % 4 == 0) ? 'clear:none' : '') + '"></a>';
         }
-        htmlTxt += '<a class="bds_more" data-cmd="more"  style="' + ((i != 0 && i % 4 == 0) ? 'clear:left' : '') + '">更多</a>';
+        htmlTxt += '<a class="bds_more ashare" data-cmd="more"  style="' + ((i != 0 && i % 4 == 0) ? 'clear:none' : '') + '">更多</a>';
         htmlTxt += '<a class="bds_count" data-cmd="count"></a>';
         $("share-list").innerHTML = htmlTxt;
         //居中
-        var w = 4 * 38;
-        var scale = document.body.clientWidth / w - 0.1;
-        $("share-list").style.marginLeft = (document.body.clientWidth - w * scale)/2 + "px";
-        $("share-list").style.marginTop = scale * 1.5 * 38 + "px";
-        $("share-list").style.webkitTransform = "scale(" + scale + ")";
-        $("share-list").style.mozTransform = "scale(" + scale + ")";
-        $("share-list").style.msTransform = "scale(" + scale + ")";
-        $("share-list").style.oTransform = "scale(" + scale + ")";
-        $("share-list").style.transform = "scale(" + scale + ")";
+        var w = parseInt(document.body.clientWidth / 300) * 300;
+        $("share-list").style.marginLeft = (document.body.clientWidth - w) / 2 + "px";
+        $("share-list").style.width = (w+10) + "px";
         window._bd_share_config = {
             common: {
                 bdText: args['title'],//'自定义分享内容',
                 bdDesc: args['desc'],//'自定义分享摘要',
                 bdUrl: args['url'],//'自定义分享url地址',
-                bdPic: args['pic'] || args['icon'],//'自定义分享图片'
+                bdPic: args['pic'] || baseURL+args['icon'],//'自定义分享图片'
                 bdSign: 'off',
                 bdPopupOffsetLeft: -250,
                 bdPopupOffsetTop: 10
@@ -159,6 +193,24 @@
             }]
         }
         with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+        //设置文字
+        var delayDoId = setInterval(showShareName, 100);
+
+        function showShareName() {
+            var aList = $("share-list").getElementsByTagName("a");
+            if (aList[0].getAttribute("title")) {
+                clearInterval(delayDoId);
+                for (var i = 0; i < aList.length; i++) {
+                    var el = aList[i];
+                    var name = el.getAttribute("title");
+                    if (name && name.indexOf("分享到") == 0) {
+                        el.innerText = name.replace("分享到", "");
+                    }
+                }
+            }
+        }
+
     }
 
 </script>
