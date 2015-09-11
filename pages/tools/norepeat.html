@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>文字去重</title>
+    <style>
+        area{
+            width: 400px;
+            height: 250px;
+        }
+    </style>
+
+    <script>
+        /**
+         * @param id
+         * @returns {Element}
+         */
+        function $(id){
+            return document.getElementById(id);
+        }
+        function doRepeat(){
+            var txt = $("originInp").value;
+            var map = {};
+            for(var index in txt){
+                if(txt[index]){
+                    map[txt[index]] = 1;
+                }
+            }
+
+            var result = "";
+            for(var key in map){
+                result += key;
+            }
+
+            $("resultInp").value = result;
+        }
+    </script>
+</head>
+<body>
+<div>
+    原始文字:
+</div>
+<textarea  id="originInp" rows="5" cols="50"></textarea>
+<div>
+    结果:
+</div>
+<textarea id="resultInp"  rows="5" cols="50"></textarea>
+<div><button onclick="doRepeat()">获得结果</button> </div>
+</body>
+</html>
