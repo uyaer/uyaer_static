@@ -80,14 +80,13 @@ a {
 
 .game_box {
     width: 1040px;
-    height: 493px;
     margin-top: 0;
     margin-right: auto;
     margin-bottom: 0;
     margin-left: auto;
     padding-top: 63px;
     padding-right: 0;
-    padding-bottom: 120px;
+    padding-bottom: 100px;
     padding-left: 0;
 }
 
@@ -168,7 +167,7 @@ a {
 }
 
 #btn_one {
-    margin-left: 50px;
+    margin-left: 100px;
     width: 295px;
     height: 85px;
     margin-top: 15px;
