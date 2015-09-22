@@ -9,7 +9,7 @@ $(document).ready(function (e) {
     updateLangNav();
 
     //初始化数据
-    $.getJSON("data/data.json?"+Date.now(), function (data) {
+    $.getJSON("data/data.json?" + Date.now(), function (data) {
         GameManager.initData(data["games"]);
 
         updatePage();
@@ -24,9 +24,9 @@ $(document).ready(function (e) {
     /**
      * 重定位
      */
-    function scrollToView(){
+    function scrollToView() {
         var url = location.href;
-        if(url.indexOf("#game-")>-1){
+        if (url.indexOf("#game-") > -1) {
             location.href = url;
         }
     }
@@ -149,7 +149,7 @@ $(document).ready(function (e) {
                 '<div class="gbr_in_onecenter"><p>' + vo.info + '</p></div>' +
                 '<div class="gbr_in_onefoot"></div></div>';
             //download
-            txt += '<div id="btn_one"><div class="down_icon"></div><a href="' + vo.downloadurl + '">';
+            txt += '<div id="btn_one"><div class="down_icon"></div><a href="' + vo.downloadurl + '?v=' + vo.version + '">';
 
             if ("zh" == lang) {
                 txt += 'Android下载';
@@ -513,10 +513,10 @@ GameManager.initData = function (arr) {
             GameManager._dataZhArr.push(vo);
         }
     }
-    GameManager._dataEnArr.sort(function (a,b) {
+    GameManager._dataEnArr.sort(function (a, b) {
         return a.sort < b.sort;
     });
-    GameManager._dataZhArr.sort(function (a,b) {
+    GameManager._dataZhArr.sort(function (a, b) {
         return a.sort < b.sort;
     });
 };
