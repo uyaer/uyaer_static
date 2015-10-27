@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="html5 games"
+          name="description">
+    <title>uyaer的H5游戏</title>
+    <style>
+        html{height: 100%}
+        body{
+            margin: 0;padding: 0;
+            height: 100%;
+        }
+        #frame{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<iframe id="frame" src="" scrolling="off" frameborder="0"></iframe>
+</body>
+<script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- html5 game -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7430856253637281"
+     data-ad-slot="8244751453"
+     data-ad-format="auto"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<script>
+    /**
+     @param {string} elementId
+     @return {Element}
+     */
+    function $(id){
+        return document.getElementById(id);
+    }
+    window.onload = function () {
+        var href = decodeURIComponent(window.location.href);
+        var params = href.substring(href.indexOf("?")+1);
+        params = params.split("&");
+        var args = {};
+        for (var i = 0; i < params.length; i++) {
+            var obs = params[i].split("=");
+            args[obs[0]] = obs[1];
+        }
+
+        var winH =window.innerHeight;
+        var ad = document.getElementsByClassName("adsbygoogle")[0];
+        var adH = parseInt(ad.style.height.replace("px",""));
+        var frame = $("frame");
+        frame.style.height=(winH-adH)+"px";
+        frame.setAttribute("src",args["url"]);
+    }
+</script>
+</html>
