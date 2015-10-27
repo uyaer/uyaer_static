@@ -10,6 +10,17 @@ body {
     margin: 0;
 }
 
+#foot_text{
+    clear: both;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+    font-size: 0.85em;
+    color: #683770;
+    margin-top: -10px;
+    clear: both;
+}
+
 article, aside, details, figcaption, figure, footer, header, main, nav, section, summary {
     display: block;
 }
@@ -222,18 +233,15 @@ body, h1, h2, h3, h4, h5, h6, a, p, div, li {
 
 h1 {
     font-size: 1.8em;
-    font-family: "Playfair Display", Georgia, serif;
     font-weight: 400;
 }
 
 h2 {
     font-size: 1.5em;
-    font-family: "Playfair Display", Georgia, serif;
     font-weight: 400;
 }
 
 h2 .box-title-title {
-    font-family: "Playfair Display", Georgia, serif;
     font-weight: 400;
 }
 
@@ -267,7 +275,6 @@ a:hover {
 }
 
 .label_overview .game-card-list .game-card .game-info h2 {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     text-align: center;
     font-size: 1.4em;
@@ -545,19 +552,6 @@ ul, ol {
     margin-left: 4px;
 }
 
-.btn-share.btn-share-facebook {
-    border-color: #2d609b;
-    background-color: #2d609b;
-}
-
-.btn-share.btn-share-facebook:hover {
-    border-color: #346fb3;
-    background-color: #346fb3;
-}
-
-.btn-share.btn-share-facebook .btn-share-icon {
-    background-position: -33px -270px;
-}
 
 .btn-share.btn-share-google {
     border-color: #df4a32;
@@ -977,7 +971,6 @@ ul, ol {
 
 .wdg_header_zibbo .header-btn.header-btn-left {
     color: #787878;
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 45px;
     float: left;
@@ -1403,33 +1396,6 @@ input[type=text]::-ms-clear {
 }
 
 
-.wdg_simple_auth .sc-facebook {
-    background-image: url('../img/sprite-icons.png');
-    background-repeat: no-repeat;
-    background-color: #3c5a98;
-    background-position: 3px -197px;
-    border: 3px solid #ccc;
-    border-radius: 3px;
-    cursor: pointer;
-    color: #FFF;
-    font: bold 12px/34px 'Helvetica Neue', Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif;
-    height: 34px;
-    line-height: 34px;
-    padding-left: 60px;
-    padding-right: 10px;
-    position: relative;
-    float: right;
-    margin-top: 18px;
-}
-
-.wdg_simple_auth .sc-facebook:hover {
-    background-color: #4061a3;
-}
-
-.wdg_simple_auth .sc-facebook:active {
-    background-color: #38548d;
-}
-
 .wdg_simple_auth .status-avatar {
     margin-top: 24px;
     cursor: pointer;
@@ -1514,7 +1480,7 @@ input[type=text]::-ms-clear {
     background-repeat: no-repeat;
     background-position: 0 -280px;
     background-repeat: repeat;
-    min-height: 81px;
+    min-height: 70px;
 }
 
 .wdg_footer_container_zibbo .footer-touch .footer-link {
@@ -1828,18 +1794,11 @@ input[type=text]::-ms-clear {
     white-space: nowrap;
 }
 
-.wdg_page_game_zibbo .share-buttons .btn-share.btn-share-facebook {
-    margin-bottom: 0;
-}
-
 @media screen and (min-width: 440px) {
     .wdg_page_game_zibbo .share-buttons .btn-share {
         width: 49%;
     }
 
-    .wdg_page_game_zibbo .share-buttons .btn-share.btn-share-facebook {
-        margin-right: 2%;
-    }
 }
 
 @media screen and (min-width: 1025px) {
