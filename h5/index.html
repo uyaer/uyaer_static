@@ -9,9 +9,10 @@
     <title>uyaer的H5游戏</title>
     <link href="plugins/jquery-ui/jquery-ui.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="../js/jquery-1.11.1.min.js"></script>
+    <script src="plugins/jquery-1.11.1.min.js"></script>
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/SHA1.js"></script>
+    <script src="js/main.js?v=1"></script>
 </head>
 <body>
 <div class="outer container">
@@ -19,9 +20,7 @@
         <section class="wdg_page_home_zibbo homepage">
             <header class="wdg_header_zibbo">
                 <button id="js-toggle-nav-menu" class="header-btn header-btn-left toggle-nav-menu">Menu</button>
-                <a class="wdg_header_logo" href="#"><img alt="H5 games" src="img/icon70.png"><span>小幼芽的H5游戏</span></a>
-
-            </header>
+                <a class="wdg_header_logo" href="#"><img alt="H5 games" src="img/icon70.png"><span>小幼芽的H5游戏</span></a> </header>
             <nav class="wdg_menu menu-horizontal" id="wdg_menu">
                 <ul>
                     <li class="cat-home active"><a class="sprite-white" href="#">Home</a></li>
@@ -36,34 +35,34 @@
                     <div class="featured-wrapper">
                         <div class="featured-info-wrapper">
                             <ul class="featured-info" id="featured-info">
-                                <li class=""><h2 class="featured-title">Bubble Shooter</h2>
-
+                                <li class="">
+                                    <h2 class="featured-title">Bubble Shooter</h2>
                                     <p class="featured-description">Try the addictive classic that started the
-                                        bubble-popping phenomenon.</p></li>
-                                <li class=""><h2 class="featured-title">Monsterland. Junior vs Senior</h2>
-
-                                    <p class="featured-description"></p></li>
-                                <li class=""><h2 class="featured-title">Cookie Crunch</h2>
-
+                                        bubble-popping phenomenon.</p>
+                                </li>
+                                <li class="">
+                                    <h2 class="featured-title">Monsterland. Junior vs Senior</h2>
+                                    <p class="featured-description"></p>
+                                </li>
+                                <li class="">
+                                    <h2 class="featured-title">Cookie Crunch</h2>
                                     <p class="featured-description">Can you keep up with all of these cascading cookies
-                                        and other sweets? They’re coming down fast!</p></li>
+                                        and other sweets? They’re coming down fast!</p>
+                                </li>
                             </ul>
                             <a class="button" href="/game/hey-summer" id="featured-cta">Play now</a></div>
                         <ul class="featured-main" id="featured-main">
                             <li class=""><a class="featured-image-link" href="/game/bubble-shooter"><img width="450"
                                                                                                          height="190"
                                                                                                          alt="Bubble Shooter"
-                                                                                                         src="icon/large1.jpg"></a>
-                            </li>
+                                                                                                         src="icon/large1.jpg"></a> </li>
                             <li class=""><a class="featured-image-link" href="/game/monsterland-junior-vs-senior"><img
                                     width="450" height="190" alt="Monsterland. Junior vs Senior"
-                                    src="icon/large1.jpg"></a>
-                            </li>
+                                    src="icon/large1.jpg"></a> </li>
                             <li class=""><a class="featured-image-link" href="/game/cookie-crunch"><img width="450"
                                                                                                         height="190"
                                                                                                         alt="Cookie Crunch"
-                                                                                                        src="icon/large1.jpg"></a>
-                            </li>
+                                                                                                        src="icon/large1.jpg"></a> </li>
                         </ul>
                     </div>
                     <ul class="featured-thumbs game-list-midi" id="featured-thumbs">
@@ -87,28 +86,35 @@
                 </article>
                 <div class="lyt-group">
                     <section class="lyt-column lyt-column-1">
-                        <article class="wdg_popular_games box"><h2 class="box-title"><a class="box-title-title"
-                                                                                        href="#">我们最爱玩的游戏</a><a class="box-title-btn" href="/games/popular">All</a></h2>
-
+                        <article class="wdg_popular_games box">
+                            <h2 class="box-title">
+                                <a class="box-title-title" href="#">小小网游</a>
+                                <a class="box-title-btn" href="/games/popular">All</a>
+                            </h2>
                             <div class="box-content">
-                                <ul class="game-card-list">
+                                <ul id="game-net" class="game-card-list">
                                     <li class="game-card"><a class="game-thumb"
                                                              href="/game/bubble-games/bubble-shooter"><img
                                             class="game-thumb-img" alt="Bubble Shooter"
                                             src="icon/1.jpg"></a><a
-                                            class="game-info" href="/game/bubble-games/bubble-shooter"><h3>Bubble
-                                        Shooter</h3></a></li>
+                                            class="game-info" href="/game/bubble-games/bubble-shooter">
+                                        <h3>Bubble
+                                            Shooter</h3>
+                                    </a></li>
                                     <li class="game-card"><a class="game-thumb" href="/game/bubble-games/bubblez-"><img
                                             class="game-thumb-img" alt="Bubblez"
                                             src="icon/1.jpg"></a><a
-                                            class="game-info" href="/game/bubble-games/bubblez-"><h3>Bubblez</h3></a>
-                                    </li>
+                                            class="game-info" href="/game/bubble-games/bubblez-">
+                                        <h3>Bubblez</h3>
+                                    </a> </li>
                                     <li class="game-card"><a class="game-thumb"
                                                              href="/game/match-3-games/1001-arabian-nights"><img
                                             class="game-thumb-img" alt="1001 Arabian Nights"
                                             src="icon/1.jpg"></a><a
-                                            class="game-info" href="/game/match-3-games/1001-arabian-nights"><h3>1001
-                                        Arabian Nights</h3></a></li>
+                                            class="game-info" href="/game/match-3-games/1001-arabian-nights">
+                                        <h3>1001
+                                            Arabian Nights</h3>
+                                    </a></li>
                                 </ul>
                             </div>
                         </article>
@@ -116,71 +122,83 @@
                 </div>
                 <div class="lyt-group">
                     <section class="lyt-column lyt-column-2">
-                        <article class="wdg_new_list box"><h2 class="box-title"><a class="box-title-title"
-                                                                                   href="#">刚出炉的新鲜货</a><a
-                                class="box-title-btn" href="/games/new">All</a></h2>
+                        <article class="wdg_new_list box">
+                            <h2 class="box-title"><a class="box-title-title"
+                                                     href="#">刚出炉的新鲜货</a><a
+                                    class="box-title-btn" href="/games/new">All</a></h2>
                             <ul class="game-card-list game-card-list-alt">
                                 <li class="game-card game-card-alt"><a class="game-thumb"
                                                                        href="/game/sorting-blocks-games/collapse-blast-en"><img
                                         class="game-thumb-img" alt="Collapse! Blast"
                                         src="icon/1.jpg"></a><a
-                                        class="game-info" href="/game/sorting-blocks-games/collapse-blast-en"><h3
-                                        class="game-title">Collapse! Blast</h3></a></li>
+                                        class="game-info" href="/game/sorting-blocks-games/collapse-blast-en">
+                                    <h3
+                                            class="game-title">Collapse! Blast</h3>
+                                </a></li>
                                 <li class="game-card game-card-alt"><a class="game-thumb"
                                                                        href="/game/mahjong-games/mahjong-everyday-en"><img
                                         class="game-thumb-img" alt="Mahjong Everyday"
                                         src="icon/1.jpg"></a><a
-                                        class="game-info" href="/game/mahjong-games/mahjong-everyday-en"><h3
-                                        class="game-title">Mahjong Everyday</h3></a></li>
+                                        class="game-info" href="/game/mahjong-games/mahjong-everyday-en">
+                                    <h3
+                                            class="game-title">Mahjong Everyday</h3>
+                                </a></li>
                                 <li class="game-card game-card-alt"><a class="game-thumb"
                                                                        href="/game/bubble-games/bubbles-shooter-en"><img
                                         class="game-thumb-img" alt="Bubbles Shooter"
                                         src="icon/1.jpg"></a><a
-                                        class="game-info" href="/game/bubble-games/bubbles-shooter-en"><h3
-                                        class="game-title">Bubbles Shooter</h3></a></li>
+                                        class="game-info" href="/game/bubble-games/bubbles-shooter-en">
+                                    <h3
+                                            class="game-title">Bubbles Shooter</h3>
+                                </a></li>
                             </ul>
                         </article>
                     </section>
                 </div>
                 <div class="lyt-group">
                     <section class="lyt-column lyt-column-3">
-                        <article class="wdg_segmentation_recommendations box"><h2 class="box-title"><a
-                                class="box-title-title" href="#">网站老板说这些好</a><a
-                                class="box-title-btn" href="/games/recommendations">All</a></h2>
+                        <article class="wdg_segmentation_recommendations box">
+                            <h2 class="box-title"><a
+                                    class="box-title-title" href="#">网站老板说这些好</a><a
+                                    class="box-title-btn" href="/games/recommendations">All</a></h2>
                             <ul class="game-card-list">
                                 <li class="game-card"><a class="game-thumb"
                                                          href="/game/bubble-games/bubble-shooter"><img
                                         class="game-thumb-img" alt="Bubble Shooter"
                                         src="icon/1.jpg"></a><a
-                                        class="game-info" href="/game/bubble-games/bubble-shooter"><h3
-                                        class="game-title">Bubble Shooter</h3></a></li>
+                                        class="game-info" href="/game/bubble-games/bubble-shooter">
+                                    <h3
+                                            class="game-title">Bubble Shooter</h3>
+                                </a></li>
                                 <li class="game-card"><a class="game-thumb"
                                                          href="/game/card-games/pyramid-solitaire-express"><img
                                         class="game-thumb-img" alt="Pyramid Solitaire Express"
                                         src="icon/1.jpg"></a><a
-                                        class="game-info" href="/game/card-games/pyramid-solitaire-express"><h3
-                                        class="game-title">Pyramid Solitaire Express</h3></a></li>
+                                        class="game-info" href="/game/card-games/pyramid-solitaire-express">
+                                    <h3
+                                            class="game-title">Pyramid Solitaire Express</h3>
+                                </a></li>
                                 <li class="game-card"><a class="game-thumb"
                                                          href="/game/match-3-games/1001-arabian-nights"><img
                                         class="game-thumb-img" alt="1001 Arabian Nights"
                                         src="icon/1.jpg"></a><a
-                                        class="game-info" href="/game/match-3-games/1001-arabian-nights"><h3
-                                        class="game-title">1001 Arabian Nights</h3></a></li>
+                                        class="game-info" href="/game/match-3-games/1001-arabian-nights">
+                                    <h3
+                                            class="game-title">1001 Arabian Nights</h3>
+                                </a></li>
                             </ul>
                         </article>
                     </section>
                 </div>
             </section>
-            <footer class="wdg_footer_container_zibbo" id="wdg_footer_container_zibbo"><p class="copyright">
-                Copyright &copy; Uyaer</p>
+            <footer class="wdg_footer_container_zibbo" id="wdg_footer_container_zibbo">
+                <p class="copyright"> Copyright &copy; Uyaer</p>
                 <ul class="footer-links">
-                    <li class="footer-link"><a target="_blank" href="#">关于我们</a>
-                    </li>
+                    <li class="footer-link"><a target="_blank" href="#">关于我们</a> </li>
                     <li class="footer-link footer-spacer"></li>
                 </ul>
                 <article class="wdg_language_selector" id="wdg_language_selector">
-                    <div class="language-selector-toggle sprite-flag-en-US" id="js-expand-language-selector">Lang
-                    </div>
+                    <div class="language-selector-toggle sprite-flag-en-US" id="js-expand-language-selector">Lang </div>
                 </article>
                 <ul class="footer-touch">
                     <li class="footer-link"><a href="../">我的App</a></li>
@@ -191,9 +209,9 @@
         </section>
     </div>
 </div>
-
 <ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content" id="ui-id-1" tabindex="0"
-    style="display: none;"></ul>
-<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span></body>
-
+    style="display: none;">
+</ul>
+<span role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></span>
+</body>
 </html>
