@@ -3,27 +3,37 @@
 // ----------------------------------------------------------------------------
 $(document).ready(function () {
 
-  $("#js-toggle-nav-menu").click(function () {
-    $(" #wdg_menu, .content, #wdg_footer_container_zibbo").toggleClass("flyout-active");
-  });
+    //网游版本
+    ajax(GameType.ON_LINE, function (arr) {
+        var parent = $("#game-online");
+        for (var i = 0; i < arr.length; i++) {
+            makeItem(arr[i],parent,"","");
+        }
+    }, 10);
+    //单机版本
+    ajax(GameType.OFF_LINE, function (arr) {
+        var parent = $("#game-offline");
+        for (var i = 0; i < arr.length; i++) {
+            makeItem(arr[i],parent,"game-card-alt","game-title");
+        }
+    }, 10);
+    //微信版本
+    ajax(GameType.WECHAT, function (arr) {
+        var parent = $("#game-wechat");
+        for (var i = 0; i < arr.length; i++) {
+            makeItem(arr[i],parent,"","game-title");
+        }
+    }, 10);
 
-  var now = Date.now();
-  var appId = "A6905655566893";
-  var appKey = "550A1EB9-EC16-2D80-D828-8BB8F9839EF6";
-  var appKey = SHA1(appId+"UZ"+appKey+"UZ"+now)+"."+now
-
-  var filter = {
-    fields:["gameId","name"]
-  }
-  $.ajax({
-    "url": "https://d.apicloud.com/mcm/api/list?filter=" + encodeURIComponent(JSON.stringify(filter)),
-    "method": "GET",
-    "cache": false,
-    "headers": {
-      "X-APICloud-AppId":appId,
-      "X-APICloud-AppKey": appKey
+    function makeItem(data, parent, liClass, h3Class) {
+        var li = $("<li>").addClass("game-card").addClass(liClass);
+        var a1 = $('<a class="game-thumb">').attr("href", data.url)
+            .append($('<img class="game-thumb-img">').attr("alt", data.name).attr("src", "icon/" + data.gameId + ".jpg"))
+            .appendTo(li);
+        var a2 = $('<a class="game-info">').attr("href", data.url)
+            .append($('<h3>').addClass(h3Class).text(data.name))
+            .appendTo(li);
+        parent.append(li);
     }
-  }).success(function (data, status, header) {
 
-  })
 });

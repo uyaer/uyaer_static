@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, maximum-scale=1.0, initial-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="html5 games"
+          name="description">
+    <title>uyaer的H5游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="plugins/jquery-1.11.1.min.js"></script>
+    <script src="js/sha1.min.js"></script>
+    <script src="js/common.min.js"></script>
+    <script src="js/list.min.js"></script>
+</head>
+
+<body class="flash desktop">
+<div class="outer container">
+    <div class="inner container">
+
+        <section layout-variation="" class="ng-scope wdg_page_labels_zibbo categorypage">
+            <header class="wdg_header_zibbo">
+                <button id="js-toggle-nav-menu" class="header-btn header-btn-left toggle-nav-menu">Menu</button>
+                <a class="wdg_header_logo" href="#"><img alt="H5 games" src="img/icon70.png"><span>小幼芽的H5游戏</span></a>
+            </header>
+
+            <nav class="wdg_menu menu-horizontal" id="wdg_menu">
+                <ul>
+                    <li class="cat-home active"><a class="sprite-white" href="#">Home</a></li>
+                    <li class="separator"><a class="sprite-white" href="list.html">所有的游戏</a></li>
+                    <li><a class="sprite-white" href="list.html?type=1">小小网游</a></li>
+                    <li><a class="sprite-white" href="list.html?type=2">爆款单机</a></li>
+                    <li><a class="sprite-white" href="list.html?type=3">我和微信有个约~)</a></li>
+                </ul>
+            </nav>
+
+            <!-- ngView:  -->
+            <section class="content ng-scope" ng-view="">
+                <section class="wdg_label_blocks_zibbo ng-scope">
+                    <h1 class="box-title cat-mahjong-games ng-binding">这些全是你需要的游戏:</h1>
+
+                    <ul id="game-list" class="game-card-list " game-bucket="all" category="puzzle_quiz">
+                        <!-- 添加内容-->
+                    </ul>
+                </section>
+            </section>
+
+            <footer class="wdg_footer_container_zibbo" id="wdg_footer_container_zibbo">
+                <p class="copyright"> Copyright &copy; Uyaer</p>
+                <ul class="footer-links">
+                    <li class="footer-link"><a target="_blank" href="#">关于我们</a></li>
+                    <li class="footer-link footer-spacer"></li>
+                </ul>
+                <article class="wdg_language_selector" id="wdg_language_selector">
+                    <div class="language-selector-toggle sprite-flag-en-US" id="js-expand-language-selector">Lang</div>
+                </article>
+                <ul class="footer-touch">
+                    <li class="footer-link"><a href="uyaer.qiniudn.com">我的App</a></li>
+                    <li class="footer-link"><a href="uyaer.qiniudn.com">还是我的App:)</a></li>
+                </ul>
+                <div id="foot_text">有梦就有希望,有爱就有幸福！</div>
+            </footer>
+        </section>
+    </div>
+</div>
+</body>
+</html>
