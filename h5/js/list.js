@@ -11,12 +11,12 @@ $(document).ready(function () {
 
     function makeItem(data, parent) {
         var li = $('<li class="game-card ng-scope">');
-        var a1 = $('<a class="game-thumb ng-isolate-scope">').attr("href", data.url)
+        var a1 = $('<a class="game-thumb ng-isolate-scope">').attr("href", "game.html?url="+data.url)
             .append($('<img class="game-thumb-img game-image ng-isolate-scope">')
                 .attr("alt", data.name)
                 .attr("title", data.name).attr("src", "icon/" + data.gameId + ".jpg"))
             .appendTo(li);
-        var a2 = $('<a class="game-info ng-isolate-scope">').attr("href", data.url)
+        var a2 = $('<a class="game-info ng-isolate-scope">').attr("href", "game.html?url="+data.url)
             .append($('<h3 class="ng-scope ng-binding">').text(data.name))
             .appendTo(li);
         parent.append(li);

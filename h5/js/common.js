@@ -16,7 +16,7 @@ $(document).ready(function () {
 
     window.ajax = function (type, callback, limit) {
         var filter = {
-            "fields": ["gameId", "name"],
+            "fields": ["gameId", "name","url"],
             "limit": limit || 1000
         };
         if (type > 0) {
