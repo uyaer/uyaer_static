@@ -1597,7 +1597,7 @@ input[type=text]::-ms-clear {
     height: 49px;
     width: 50px;
     border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+
     position: absolute;
     overflow: hidden;
     right: 0;
@@ -1799,6 +1799,12 @@ input[type=text]::-ms-clear {
         width: 49%;
     }
 
+}
+@media screen and (max-width: 1023px) {
+    #foot_text{
+        margin-top: -25px;
+        padding-bottom: 5px;
+    }
 }
 
 @media screen and (min-width: 1025px) {

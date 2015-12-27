@@ -7,23 +7,23 @@ $(document).ready(function () {
     ajax(GameType.ON_LINE, function (arr) {
         var parent = $("#game-online");
         for (var i = 0; i < arr.length; i++) {
-            makeItem(arr[i],parent,"","");
+            makeItem(arr[i], parent, "", "");
         }
-    }, 10);
+    }, 5);
     //单机版本
     ajax(GameType.OFF_LINE, function (arr) {
         var parent = $("#game-offline");
         for (var i = 0; i < arr.length; i++) {
-            makeItem(arr[i],parent,"game-card-alt","game-title");
+            makeItem(arr[i], parent, "game-card-alt", "game-title");
         }
-    }, 10);
+    }, 5);
     //微信版本
     ajax(GameType.WECHAT, function (arr) {
         var parent = $("#game-wechat");
         for (var i = 0; i < arr.length; i++) {
-            makeItem(arr[i],parent,"","game-title");
+            makeItem(arr[i], parent, "", "game-title");
         }
-    }, 10);
+    }, 5);
 
     function makeItem(data, parent, liClass, h3Class) {
         var li = $("<li>").addClass("game-card").addClass(liClass);
