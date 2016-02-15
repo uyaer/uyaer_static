@@ -1,7 +1,10 @@
 $(document).ready(function () {
-    $("#js-toggle-nav-menu").click(function () {
-        $(" #wdg_menu, .content, #wdg_footer_container_zibbo").toggleClass("flyout-active");
-    });
+    var menu = $("#js-toggle-nav-menu");
+    if(menu){
+        menu.click(function () {
+            $(" #wdg_menu, .content, #wdg_footer_container_zibbo").toggleClass("flyout-active");
+        });
+    }
 
     var now = Date.now();
     var appId = "A6905655566893";
@@ -16,12 +19,30 @@ $(document).ready(function () {
 
     window.ajax = function (type, callback, limit) {
         var filter = {
-            "fields": ["gameId", "name","url"],
+            "fields": ["gameId", "name","id"],
             "limit": limit || 1000
         };
         if (type > 0) {
             filter["where"] = {"type": type};
         }
+        $.ajax({
+            "url": "https://d.apicloud.com/mcm/api/list?filter=" + encodeURIComponent(JSON.stringify(filter)),
+            "method": "GET",
+            "cache": false,
+            "headers": {
+                "X-APICloud-AppId": appId,
+                "X-APICloud-AppKey": appKey
+            }
+        }).success(function (data, status, header) {
+            callback && callback(data);
+        });
+    }
+    window.ajaxGameInfo = function (id, callback) {
+        var filter = {
+            "fields": ["params","url","gameId","name"],
+            "limit": 1,
+            "where":{"id":id}
+        };
         $.ajax({
             "url": "https://d.apicloud.com/mcm/api/list?filter=" + encodeURIComponent(JSON.stringify(filter)),
             "method": "GET",

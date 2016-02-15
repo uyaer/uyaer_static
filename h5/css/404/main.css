@@ -1,0 +1,221 @@
+/*
+* CSS Main
+* By Difluir - www.difluir.com
+*/
+
+/************************************************************************************
+basic reset
+*************************************************************************************/
+html, body, 
+div, a, p, br, b, strong, small, big, span, em, i, 
+h1, h2, h3, h4, h5, h6, 
+pre, code, blockquote, cite, 
+ul, ol, li, dl, dd, dt, 
+form, fieldset, select, input, textarea, button, 
+table, thead, tbody, tfoot, tr, th, td, 
+abbr, acronym, legend, address, del, ins, 
+img, map, object, 
+sub, sup, bdo, dfn, kbd, q, samp, tt, var {margin:0; padding:0; outline:0;}
+
+:focus {outline:0;}
+
+
+/* html5
+===================== */
+header, footer, hgroup, menu, nav, details, section, article, aside, figure, figcaption {display:block; margin:0; padding:0;}
+
+
+/* html and body
+===================== */
+html {height:100%;}
+body {min-height:100%;}
+
+
+/* basic
+===================== */
+a {text-decoration:none;}
+
+p {margin:0 0 18px;}
+
+i, em {font-style:italic;}
+b, strong {font-weight:bold;}
+
+u {text-decoration:underline;}
+
+small {font-size:87%;}
+big {font-size:13px;}
+
+h1, h2, h3, h4, h5, h6 {font-weight:normal;}
+
+
+/* lists
+===================== */
+ul, ol {margin:0 0 20px 1px; list-style:none;}
+
+ul li {padding:1px 0 1px 4px; list-style:inside disc;}
+ul li ul li {list-style:inside circle;}
+ul li ol li {list-style:inside decimal;}
+
+ul li ul li:last-child, 
+ul li ol li:last-child {padding-bottom:0;}
+
+ul li ul,
+ul li ol {margin:0 0 0 17px;}
+
+ol li {padding:1px 0 1px 4px; list-style:inside decimal;}
+ol li ol li {list-style:inside decimal;}
+ol li ul li {list-style:inside disc;}
+
+ol li ol li:last-child, 
+ol li ul li:last-child {padding-bottom:0;}
+
+ol li ol, 
+ol li ul {margin:0 0 0 17px;}
+
+
+/* alignment
+===================== */
+.left {float:left;}
+.right {float:right;}
+.center {display:block; margin:0 auto 10px; text-align:center;}
+
+.alignnone {margin:4px;}
+.aligncenter {display:block; margin:0 auto 10px; text-align:center;}
+.alignleft {float:left; margin:0 13px 0 0;}
+.alignright {float:right; margin:0 0 0 13px;}
+
+
+/* images
+===================== */
+img {border:0; max-width:100%; height:auto;}
+.ie8 img {width:auto; height:auto;}
+
+
+/* videos and iframes
+===================== */
+video, iframe, object, embed {width:100%; display:block; margin:0; padding:0;}
+
+
+/* forms
+===================== */
+form, fieldset, select, input, textarea, button {border:0;}
+select, input[type=submit], button {cursor:pointer;}
+select, input, textarea, button {font:normal normal 12px/14px Verdana, Geneva, sans-serif; color:#636363;}
+
+select, input[type=text],input[type=password], textarea {background:#fff; border:1px solid #e9e4d6; border-width:1px 0 0 1px; width:90%; display:block; padding:5px;}
+
+select {width:30%;}
+textarea {height:120px;}
+
+select:focus, input[type=text]:focus, textarea:focus {border-color:#c7c2b3;}
+select.error, input[type=text].error, textarea.error {border-color:#f30;}
+
+
+/* clear
+===================== */
+.clear {display:block; clear:both;}
+.clearfix:after {visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+.clearfix {display:inline-block;}
+.clearfix {display:block;}
+
+
+/* no text - no margin - no padding - no style
+===================== */
+.notext {font-size:0; line-height:0; text-indent:-10000px;}
+.nomargin {margin:0;}
+.nopadding {padding:0;}
+.nostyle {margin:0; padding:0; list-style:none;}
+
+
+/* WordPress default gallery
+===================== */
+.gallery {width:100%; display:block; margin:0 0 20px;}
+
+.gallery-columns-2 .gallery-item {width:50%; float:left;}
+.gallery-columns-3 .gallery-item {width:33%; float:left;}
+.gallery-columns-4 .gallery-item {width:25%; float:left;}
+.gallery-columns-5 .gallery-item {width:20%; float:left;}
+.gallery-columns-6 .gallery-item {width:16.66%; float:left;}
+.gallery-columns-7 .gallery-item {width:14.28%; float:left;}
+.gallery-columns-8 .gallery-item {width:12.50%; float:left;}
+.gallery-columns-9 .gallery-item {width:11.11%; float:left;}
+
+.gallery .gallery-item {margin-top:7px; display:block; position:relative;}
+.gallery .gallery-item .gallery-icon {width:97%; max-width:97%; height:100%; display:block; position:relative;}
+.gallery .gallery-item img {width:100%; height:auto; display:block;}
+
+
+/************************************************************************************
+basic
+*************************************************************************************/
+body {background:url(https://dn-h5.qbox.me/img/404/bg.jpg) repeat fixed; font:normal normal 11px/18px "Open Sans", sans-serif; color:#413333; letter-spacing:0.2px; text-align:justify;}
+
+a {color:#3a2c2d; text-decoration:none;}
+p {margin:0 0 18px;}
+
+.content {width:1000px; margin:0 auto; position:relative; z-index:3;}
+
+/* opacity hover links */
+.opacity a {-webkit-transition: all 0.3s linear; -moz-transition: all 0.3s linear; -o-transition: all 0.3s linear; transition: all 0.3s linear;}
+
+@media screen and (min-width: 990px) { body {overflow-x:hidden;} }
+
+
+/************************************************************************************
+header
+*************************************************************************************/
+#header {background:url(https://dn-h5.qbox.me/img/404/header.png) center top repeat-x; width:100%; height:71px;}
+#header .border {border-top:3px solid #3e3131; width:100%; height:71px;}
+
+#menu li a span.n {opacity:1;}
+#menu li a span.h {opacity:0;}
+
+#menu li a:hover span.n {opacity:0;}
+#menu li a:hover span.h {opacity:1;}
+
+#menu li.current a span.n {opacity:1;}
+#menu li.current a span.h {opacity:0;}
+
+
+#menu li.home {margin:0;}
+#menu li.home a {width:59px;}
+#menu li.home a span.n {background-position:-2px 0; width:59px;}
+#menu li.home a span.h {background-position:-2px -42px; width:59px;}
+#menu li.home.current a span.n {background-position:-2px -85px;}
+
+#menu li.about a {width:83px;}
+#menu li.about a span.n {background-position:-92px 0; width:83px;}
+#menu li.about a span.h {background-position:-92px -42px; width:83px;}
+#menu li.about.current a span.n {background-position:-92px -85px;}
+
+#menu li.blog a {width:52px;}
+#menu li.blog a span.n {background-position:-203px 0; width:52px;}
+#menu li.blog a span.h {background-position:-203px -42px; width:52px;}
+#menu li.blog.current a span.n {background-position:-203px -85px;}
+
+#menu li.folio a {width:92px;}
+#menu li.folio a span.n {background-position:-287px 0; width:92px;}
+#menu li.folio a span.h {background-position:-287px -42px; width:92px;}
+#menu li.folio.current a span.n {background-position:-287px -85px;}
+
+#menu li.shop a {width:62px;}
+#menu li.shop a span.n {background-position:-410px 0; width:62px;}
+#menu li.shop a span.h {background-position:-410px -42px; width:62px;}
+#menu li.shop.current a span.n {background-position:-410px -85px;}
+
+
+@media screen and (max-width: 1024px) {
+	#primary-navigation {margin-right:15px;}
+	#menu li {margin:0 0 0 27px;}
+}
+
+
+/* featured blue box
+===================== */
+.featured.blue {background:url(https://dn-h5.qbox.me/img/404/featbg.png) top center repeat-x; width:100%; min-height:100px; margin:50px 0 0; padding:0 0 57px; color:#413333;}
+
+
+
+/* featured brown
+===================== */
+.featured.brown .column {padding-bottom:0;}

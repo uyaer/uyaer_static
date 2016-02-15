@@ -27,10 +27,10 @@ $(document).ready(function () {
 
     function makeItem(data, parent, liClass, h3Class) {
         var li = $("<li>").addClass("game-card").addClass(liClass);
-        var a1 = $('<a class="game-thumb">').attr("href", "game.html?url="+data.url)
+        var a1 = $('<a class="game-thumb">').attr("href", "game.html?id="+data.id)
             .append($('<img class="game-thumb-img">').attr("alt", data.name).attr("src", "icon/" + data.gameId + ".jpg"))
             .appendTo(li);
-        var a2 = $('<a class="game-info">').attr("href", "game.html?url="+data.url)
+        var a2 = $('<a class="game-info">').attr("href", "game.html?id="+data.id)
             .append($('<h3>').addClass(h3Class).text(data.name))
             .appendTo(li);
         parent.append(li);

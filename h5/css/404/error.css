@@ -1,0 +1,116 @@
+/*
+* CSS Error
+* By Difluir - www.difluir.com
+*/
+
+#errorimg {display:none;}
+.error404 #main {padding:100px 0 60px;}
+
+#error {width:482px; height:267px; margin:0 auto;}
+#errorimg {background:url(https://dn-h5.qbox.me/img/404/error.png); width:397px; height:53px; margin:0 auto; padding:214px 0 0 85px; position:relative; z-index:3;}
+
+#errorimg a {font-weight:bold; font-size:10px; line-height:11px; text-transform:uppercase; color:#c9c1ab; text-shadow:1px 1px 0 #fff;}
+#errorimg a strong {
+	color:#019d92;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+#errorimg a:hover strong {color:#9cc663;}
+
+
+/************************************************************************************
+featured
+*************************************************************************************/
+
+/* featured blue box
+===================== */
+.featured.blue .column.skills, .featured.blue .column.tweets {background:none; padding-bottom:0;}
+.featured.blue .column.skills h1.title, .featured.blue .column.tweets h1.title {background:none; width:auto; height:auto; margin:0; position:relative;}
+
+
+/* title
+===================== */
+.featured h1.pgtitle {background:url(../imgs/titleseealso.png); width:150px; height:46px; margin:-30px auto 20px; font-size:0; line-height:0; text-indent:-10000px;}
+
+.featured .column h1.title {background:url(../imgs/ribbon2.png) 0 -48px; width:295px; height:43px; position:absolute; top:21px; left:-11px; z-index:3;}
+.featured .column a:hover h1.title {background-position:0 0;}
+
+.featured .column h1.title span {display:block; padding:10px 0 0 15px; font-weight:600; font-size:10px; line-height:11px; color:#f5f1de; text-transform:uppercase; letter-spacing:0.3px; text-shadow:-1px -1px 0 #118b83;}
+.featured .column h1.title strong {font-weight:800;}
+
+.featured .column a:hover h1.title span {text-shadow:-1px -1px #362a2a;}
+
+
+/* portfolio, blog and shop
+===================== */
+.featured .column.pbs a {display:block;}
+.featured .column.pbs img {display:block; margin:0; padding:0;}
+.featured .column.pbs a span.border {display:none;}
+.featured .column.pbs a:hover span.border {border:6px solid #fff; width:294px; height:238px; display:block; position:absolute; z-index:2;}
+
+
+/* contact form
+===================== */
+form.contactme {background:#fff url(../imgs/contactbrush.png) top right no-repeat; width:263px; height:181px; padding:69px 21px 0 20px;}
+form.contactme p {margin:0 0 2px;}
+
+form.contactme input[type=text], form.contactme textarea {
+	background:url(../imgs/contact.png); border:0;
+	opacity:1;
+	width:243px; height:09px;
+	margin:0; padding:10px;
+	font:normal bold 8px/9px "Open Sans", sans-serif;
+	letter-spacing:0.5px;
+	color:#413333;
+	text-transform:uppercase;
+	-webkit-transition: opacity 0.3s linear;
+	-moz-transition: opacity 0.3s linear;
+	-o-transition: opacity 0.3s linear;
+	transition: opacity 0.3s linear;
+}
+
+form.contactme textarea {background-position:0 -66px; height:62px; resize:none; overflow-x:hidden; overflow-y:auto;}
+
+form.contactme input[type=text]:focus, form.contactme textarea:focus {color:#000; opacity:0.7; font:normal bold 9px/11px "Open Sans", sans-serif; text-transform:none;}
+
+/* checkbox */
+form.contactme p.checkbox {width:185px; float:left; margin:4px 0 0; font-weight:600; font-size:8px; line-height:9px; text-transform:uppercase; word-spacing:2px;}
+form.contactme p.checkbox strong {font-weight:700; letter-spacing:normal;}
+form.contactme p.checkbox label {cursor:pointer; cursor:hand;}
+
+form.contactme p.checkbox label input[type="checkbox"], 
+form.contactme p.checkbox label input[type="checkbox"] + span, 
+form.contactme p.checkbox label input[type="checkbox"] + span::before {vertical-align:middle;}
+
+form.contactme p.checkbox label input[type="checkbox"] {position:absolute; filter:alpha(opacity=0); -moz-opacity:0; -webkit-opacity:0; opacity:0;}
+form.contactme p.checkbox label input[type="checkbox"] + span, form.contactme p.checkbox label input[type="checkbox"] + span::before {display:inline-block;}
+form.contactme p.checkbox label input[type="checkbox"] + span::before {content:"\2714";}
+
+form.contactme p.checkbox label input[type="checkbox"] + span::before {
+	background:url(../imgs/contact.png) 0 -246px;
+	text-indent:-9999px;
+	width:11px;
+	height: 15px;	
+	margin:0 5px 0 0;
+}
+
+form.contactme p.checkbox label input[type="checkbox"]:checked + span::before {background:url(../imgs/contact.png) 0 -268px;}
+form.contactme p.checkbox label input[type="checkbox"]:disabled + span::before {background:url(../imgs/contact.png) 0 -246px;}
+form.contactme p.checkbox label input[type="checkbox"]:disabled + span::before, form.contactme p.checkbox label input[type="checkbox"]:disabled + span::before {cursor:default;}
+
+
+/* submit */
+form.contactme p.submit {width:51px; float:right; margin:8px 0 0;}
+
+form.contactme button {background:none; border:0; width:63px; float:right; margin:-2px -6px 0 0; display:block; cursor:pointer; font-weight:900; font-size:9px; line-height:9px; font-family:"Open Sans", sans-serif; text-transform:uppercase; color:#3eb0a3; letter-spacing:0.5px;}
+form.contactme button:hover {-webkit-transition: all 0.3s linear; -moz-transition: all 0.3s linear; -o-transition: all 0.3s linear; transition: all 0.3s linear; color:#9cc663;}
+
+form.contactme button span {background:url(../imgs/arrowsendit.png) 0 -2px; width:7px; height:7px; display:inline-block; *display:inline; vertical-align:middle; margin-left:1px; font-size:0; line-height:0; text-indent:-10000px;}
+form.contactme button:hover span {background-position:0 -13px;}
+
+
+/* errors messages */
+.column.contact .error {display:none;}
+.column.contact p.thanks-message, .column.contact span.sending {background:#none; display:block; position:absolute; top:235px; right:22px; margin:0; padding:0; font-style:italic; font-size:8px; line-height:8px; color:#bfb7a8; text-transform:uppercase; text-align:right;}

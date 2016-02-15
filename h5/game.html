@@ -18,29 +18,15 @@
             height: 100%;
         }
     </style>
+    <script src="plugins/jquery-1.11.1.min.js"></script>
+    <script src="js/sha1.min.js"></script>
+    <script src="js/common.js?v=1"></script>
 </head>
 <body>
 
 <iframe id="frame" src="" scrolling="off" frameborder="0"></iframe>
 </body>
-<script src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- html5 game -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-7430856253637281"
-     data-ad-slot="8244751453"
-     data-ad-format="auto"></ins>
 <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<script>
-    /**
-     @param {string} elementId
-     @return {Element}
-     */
-    function $(id){
-        return document.getElementById(id);
-    }
     window.onload = function () {
         var href = decodeURIComponent(window.location.href);
         var params = href.substring(href.indexOf("?")+1);
@@ -50,13 +36,16 @@
             var obs = params[i].split("=");
             args[obs[0]] = obs[1];
         }
-
-        var winH =window.innerHeight;
-        var ad = document.getElementsByClassName("adsbygoogle")[0];
-        var adH = parseInt(ad.style.height.replace("px",""));
-        var frame = $("frame");
-        frame.style.height=(winH-adH)+"px";
-        frame.setAttribute("src","/games/"+args["url"]+"/?v"+Date.now());
+        ajaxGameInfo(args["id"], function (arr) {
+            var data = arr[0];
+            var frame = $("#frame");
+            var url = "/games/"+data["url"]+"/?v"+Date.now();
+            if(data["params"]){
+                url+="&"+data["params"];
+            }
+            window.document.title = data["name"];
+            frame.attr("src",url);
+        });
     }
 </script>
 </html>
