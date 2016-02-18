@@ -20,7 +20,8 @@ $(document).ready(function () {
     window.ajax = function (type, callback, limit) {
         var filter = {
             "fields": ["gameId", "name","id"],
-            "limit": limit || 1000
+            "limit": limit || 1000,
+            "order":["order DESC","gameId ASC"]
         };
         if (type > 0) {
             filter["where"] = {"type": type};
@@ -37,7 +38,7 @@ $(document).ready(function () {
     }
     window.ajaxTopGame = function (callback) {
         var filter = {
-            "fields": ["gameId","name","id"],
+            "fields": ["gameId","name","id","toptip"],
             "order":"top DESC",
             "limit": 6,
             "where":{"top":{"gt":0}}

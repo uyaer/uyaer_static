@@ -21,7 +21,7 @@ $(document).ready(function () {
         $li = $("<li>");
         parent.append($li);
         $li.html('<h2 class="featured-title">'+data.name+'</h2>' +
-            '<p class="featured-description">'+data.desc+'</p>');
+            '<p class="featured-description">'+data.toptip+'</p>');
     }
 
     function makeTopLargeItem(data,parent){
@@ -52,7 +52,7 @@ $(document).ready(function () {
         sInfo.children().css("opacity","0");
         sInfo.children().eq(index).css("opacity","1");
         sInfo.children().eq(index).css("visibility","visible");
-        sButton.attr("href","game.html?id="+$(this).data("gid"));
+        sButton.attr("href","game.html?id="+$item.data("gid"));
     }
 
     //////////////////////////////////////
@@ -62,7 +62,7 @@ $(document).ready(function () {
         for (var i = 0; i < arr.length; i++) {
             makeItem(arr[i], parent, "", "");
         }
-    }, 10);
+    }, 12);
     //网游版本
     ajax(GameType.ON_LINE, function (arr) {
         var parent = $("#game-online");
@@ -76,7 +76,7 @@ $(document).ready(function () {
         for (var i = 0; i < arr.length; i++) {
             makeItem(arr[i], parent, "", "game-title");
         }
-    }, 5);
+    }, 12);
 
     function makeItem(data, parent, liClass, h3Class) {
         var li = $("<li>").addClass("game-card").addClass(liClass);
