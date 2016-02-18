@@ -25,17 +25,7 @@ $(document).ready(function () {
         if (type > 0) {
             filter["where"] = {"type": type};
         }
-        $.ajax({
-            "url": "https://d.apicloud.com/mcm/api/list?filter=" + encodeURIComponent(JSON.stringify(filter)),
-            "method": "GET",
-            "cache": false,
-            "headers": {
-                "X-APICloud-AppId": appId,
-                "X-APICloud-AppKey": appKey
-            }
-        }).success(function (data, status, header) {
-            callback && callback(data);
-        });
+        _ajax(filter,callback);
     }
     window.ajaxGameInfo = function (id, callback) {
         var filter = {
@@ -43,6 +33,19 @@ $(document).ready(function () {
             "limit": 1,
             "where":{"id":id}
         };
+        _ajax(filter,callback);
+    }
+    window.ajaxTopGame = function (callback) {
+        var filter = {
+            "fields": ["gameId","name","id"],
+            "order":"top DESC",
+            "limit": 6,
+            "where":{"top":{"gt":0}}
+        };
+        _ajax(filter,callback);
+    }
+
+    window._ajax = function (filter,callback) {
         $.ajax({
             "url": "https://d.apicloud.com/mcm/api/list?filter=" + encodeURIComponent(JSON.stringify(filter)),
             "method": "GET",

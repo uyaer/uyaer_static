@@ -3,6 +3,59 @@
 // ----------------------------------------------------------------------------
 $(document).ready(function () {
 
+    var sIconLi = $("#featured-thumbs");
+    var sLarge = $("#featured-main");
+    var sInfo = $("#featured-info");
+    var sButton = $("#featured-cta");
+    //top推荐
+    ajaxTopGame(function (arr) {
+        for(var i = 0 ; i < arr.length;i++){
+            makeTopSmallItem(arr[i],sIconLi);
+            makeTopLargeItem(arr[i],sLarge);
+            makeTopInfoItem(arr[i],sInfo);
+        }
+        topShowIndex(sIconLi.children().eq(0));
+    });
+
+    function makeTopInfoItem(data,parent){
+        $li = $("<li>");
+        parent.append($li);
+        $li.html('<h2 class="featured-title">'+data.name+'</h2>' +
+            '<p class="featured-description">'+data.desc+'</p>');
+    }
+
+    function makeTopLargeItem(data,parent){
+        $li = $("<li>");
+        parent.append($li);
+        $li.html('<a class="featured-image-link" href="game.html?id='+data.id+'">' +
+            '<img width="450" height="190" alt="'+data.name+'." src="icon/large'+data.gameId+'.jpg"/>' +
+            '</a>');
+    }
+
+    function makeTopSmallItem(data,parent){
+        var $li = $('<li class="game-thumb game">');
+        parent.append($li);
+        $li.data("gid",data.id);
+        $li.html('<a href="game.html?id='+data.id+'">' +
+            '<img width="130" height="90" class="game-thumb-img" alt="'+data.name+'" src="icon/' + data.gameId + '.jpg"/>' +
+            '<span class="cta-text">Play now</span>' +
+            '</a>');
+        $li.mouseenter(function () {
+            topShowIndex($(this));
+        })
+    }
+
+    function topShowIndex($item){
+        var index = $item.prevAll().length;
+        sLarge.children().css("opacity","0");
+        sLarge.children().eq(index).css("opacity","1");
+        sInfo.children().css("opacity","0");
+        sInfo.children().eq(index).css("opacity","1");
+        sInfo.children().eq(index).css("visibility","visible");
+        sButton.attr("href","game.html?id="+$(this).data("gid"));
+    }
+
+    //////////////////////////////////////
     //单机版本
     ajax(GameType.OFF_LINE, function (arr) {
         var parent = $("#game-offline");

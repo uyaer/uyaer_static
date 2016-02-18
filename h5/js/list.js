@@ -7,7 +7,7 @@ $(document).ready(function () {
         for (var i = 0; i < arr.length; i++) {
             makeItem(arr[i], parent);
         }
-    }, 10);
+    });
 
     function makeItem(data, parent) {
         var li = $('<li class="game-card ng-scope">');
