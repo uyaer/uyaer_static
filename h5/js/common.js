@@ -30,7 +30,7 @@ $(document).ready(function () {
     }
     window.ajaxGameInfo = function (id, callback) {
         var filter = {
-            "fields": ["params","url","gameId","name"],
+            "fields": ["redirectUrl","url","gameId","name"],
             "limit": 1,
             "where":{"id":id}
         };

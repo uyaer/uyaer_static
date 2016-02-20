@@ -46,8 +46,8 @@
             var data = arr[0];
             var frame = $("#frame");
             var url = "/games/"+data["url"]+"/?v"+Date.now();
-            if(data["params"]){
-                url+="&"+data["params"];
+            if(data["redirectUrl"]){
+                url = data["redirectUrl"];
             }
             window.document.title = data["name"];
             frame.attr("src",url);
